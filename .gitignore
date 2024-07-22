@@ -1,0 +1,91 @@
+# Ignore object files, shared libraries, and static libraries
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.dylib
+
+# Ignore executables
+*.exe
+*.out
+*.app
+
+# Ignore build directories (e.g., for CMake)
+build/
+cmake-build-*/
+
+# Ignore dependency files and logs
+*.d
+*.dep
+*.dSYM/
+*.log
+
+# Ignore temporary files
+*~
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+
+# Ignore IDE-specific directories and files
+.vscode/
+.idea/
+*.code-workspace
+
+# Ignore generated files from package managers (e.g., vcpkg, Conan)
+vcpkg_installed/
+conanbuildinfo.txt
+conaninfo.txt
+
+# Ignore CMake generated files
+CMakeFiles/
+CMakeCache.txt
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+compile_commands.json
+
+# Ignore Visual Studio files
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.vcproj
+*.sln
+*.opensdf
+*.sdf
+*.ipch
+*.aps
+*.ncb
+*.user
+*.rsrc
+*.res
+
+# Ignore Xcode files
+*.xcworkspace
+*.xcuserstate
+*.xcodeproj
+*.xcsettings
+*.xccheckout
+
+# Ignore Code::Blocks files
+*.layout
+*.depend
+*.depend.*
+*.cbp
+
+# Ignore Qt Creator files
+*.pro.user
+*.qbs.user
+*.pro.user.*
+*.qbs.user.*
+*.creator.user
+*.creator.user.*
+
+# Ignore Clion files
+cmake-build-debug/
+cmake-build-release/
+*.iml
