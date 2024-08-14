@@ -39,7 +39,7 @@ bool sorted(vector<int> &arr)
 {
     for (int i = 1; i < arr.size(); i++)
     {
-        if (arr[i-1] =< arr[i])
+        if (arr[i - 1] = < arr[i])
         {
         }
         else
@@ -48,20 +48,72 @@ bool sorted(vector<int> &arr)
     return true;
 }
 
-
-// 4. remove the duplicates / 
-int removeDuplicates(vector<int> &arr){
-    for (int j=1 ; j<arr.size() ; j++) {
-        int i = 0 ;
-        if (arr[i] != arr[j]){
-            arr[i+1] = arr[j] ;
+// 4. remove the duplicates /
+int removeDuplicates(vector<int> &arr)
+{
+    int i = 0;
+    for (int j = 1; j < arr.size(); j++)
+    {
+        if (arr[i] != arr[j])
+        {
+            arr[i + 1] = arr[j];
             i++;
         }
     }
-    return i+1 ; 
+    return i + 1;
+}
+
+// 5. left rotate array by one place
+vector<int> rotateArray(vectore<int> &arr)
+{
+    int temp = arr[0];
+    for (int i = 1; i < arr.size; i++)
+    {
+        arr[i - 1] = arr[i];
+    }
+    arr[n - 1] = temp;
+    return arr ;
 }
 
 
+// 6. left rotate array by n place 
+// method 1
+void rotateArrayN(vector<int> &arr , int d)
+{
+    int n = arr.size();
+    d = d % n ;
+
+    vector<int> temp[d];
+    for (int i=0 ; i<d ; i++){
+        temp[i] = arr[i];
+    }
+
+    for (int i=d ; i<n ; i++){
+        arr[i-d]  = arr[i]
+    }
+
+    for (int i=n-d ; i<n ; i++){
+        arr[i] = temp[i-(n-d)] ;
+    }
+
+    // time complexity = O(n+d) => O(d)+ O(n-d) + O(d)
+    // space complexity = O(d)
+
+}
+
+// method 2 (optimal) 
+void rotateArrayByN(vector<int> &arr , int d){
+    int n = arr.size();
+    d = d % n ;
+
+    reverse(arr.begin() , arr.begin()+d);
+    reverse(arr.begin()+d , arr.begin()+n);
+    reverse(arr.begin() , arr.end());
+
+    // time complexity = O(2n) 
+    // space complexity = O(1) 
+    // time comp. increased and space comp. decreased
+}
 
 
 int main()
@@ -70,4 +122,7 @@ int main()
     // slargest();
     // sorted();
     // removeDuplicates();
+    // rotateArray(); 
+    // rotateArrayN();
+    // rotateArrayByN();
 }
