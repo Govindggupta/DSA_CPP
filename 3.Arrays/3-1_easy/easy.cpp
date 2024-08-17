@@ -182,6 +182,6 @@ int main()
     // rotateArrayN();
     // rotateArrayByN();
 
-    moveZero();
-    movezero()
+    // moveZero();
+    // movezero();
 }
