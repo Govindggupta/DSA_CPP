@@ -16,9 +16,7 @@ int linearSearch(vector<int> &arr, int num)
 }
 
 
-
 // 9. find the union and intersection in two sorted array
-
 // union :
 // brutte force approach is using map or set
 // optimal
@@ -75,7 +73,7 @@ vector<int> Union(vector<int> &a, vector<int> &b)
 }
 
 // Intersection :
-// brutte force 
+// brutte force
 vector<int> Intersection(vector<int> &a, vector<int> &b)
 {
     int n1 = a.size();
@@ -88,38 +86,41 @@ vector<int> Intersection(vector<int> &a, vector<int> &b)
     {
         for (int j = 0; j < n2; j++)
         {
-            if(a[i] == b[j] && vis[j] == 0) {
+            if (a[i] == b[j] && vis[j] == 0)
+            {
                 ans.emplace_back(a[i]);
                 vis[j] = 1;
-                break ;
+                break;
             }
         }
-        
     }
     return ans;
 
-    // time : n1*n2 
+    // time : n1*n2
     // space :  n2
 }
 
-// optimal 
+// optimal
 vector<int> Intersection(vector<int> &a, vector<int> &b)
 {
     int n1 = a.size();
     int n2 = b.size();
-    int i=0 ;
-    int j=0 ;
+    int i = 0;
+    int j = 0;
     vector<int> ans;
 
-    while (i<n1 && j<n2)
+    while (i < n1 && j < n2)
     {
-        if(a[i]<b[j]){
+        if (a[i] < b[j])
+        {
             i++;
         }
-        else if(b[j] < a[i]){
+        else if (b[j] < a[i])
+        {
             j++;
         }
-        else{
+        else
+        {
             ans.emplace_back(a[i]);
             i++;
             j++;
@@ -129,15 +130,87 @@ vector<int> Intersection(vector<int> &a, vector<int> &b)
 
     // time: O(n1+n2)
     // space: O(1)
-    
 }
 
+
+
+// 10. find the missing number
+// brutte force
+int missingNum(vector<int> &arr, int N, int n)
+{
+    for (int i = 0; i < N; i++)
+    {
+        int flag = 0;
+        for (int j = 0; j < n; j++)
+        {
+            if (arr[j] == N)
+            {
+                flag = 1;
+            }
+        }
+        if (flag == 0)
+            return i;
+
+        // time : O(N*N)
+        // space : O(1)
+    }
+}
+
+// better
+int missingNum(vector<int> &arr, int N, int n)
+{
+    int hash[N + 1] = {0};
+    for (int i = 0; i < n; i++)
+    {
+        hash[arr[i]]++;
+    }
+
+    for (int i = 1; i <= N; i++)
+    {
+        if (hash[i] == 0)
+            return i;
+    }
+
+    // time : O(2N)
+    // space : O(N)
+}
+
+// optimal
+int missingNum(vector<int> &arr, int N, int n)
+{
+    int Sum = N * (N + 1);
+    int sl = 0;
+    for (int i = 0; i < n; i++)
+    {
+        sl = sl + arr[i];
+    }
+    return Sum - sl;
+
+    // time : O(N)
+    // space : O(1)
+}
+// optimal.2 (XOR)
+int missingNum(vector<int> &arr, int N)
+{
+    int n = N - 1;
+    int xor1 = 0, xor2 = 0;
+    for (int i = 0; i < n; i++)
+    {
+        xor2 = xor2 ^ arr[i];
+        xor1 = xor1 ^ (i + 1) :
+    }
+    xor1 = xor1 ^ N;
+    return xor1 ^ xor2;
+
+    // time : O(N)
+    // space : O(1)
+}
 
 int main()
 {
 
     linearSearch();
-    
+
     Union();
     Intersection();
 
