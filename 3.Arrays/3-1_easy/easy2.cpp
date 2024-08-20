@@ -206,6 +206,52 @@ int missingNum(vector<int> &arr, int N)
     // space : O(1)
 }
 
+
+
+// 11. maximum consicutive 1's
+int consicutive(vector<int> &arr , int n){
+
+    int count = 0 ;
+    int maxi = 0 ;
+    for (int i = 0; i < n; i++)
+    {
+        if(arr[i] == 1){
+            count++;
+            maxi = max(maxi , count);
+        }
+        else{
+            count = 0;
+        }
+    }
+    return maxi;
+
+    // time : O(n)
+}
+
+
+
+// 12. Find the number that apper once and other number twice 
+// butte force : linear Search
+// time : O(n^2)
+// space : O(1)
+
+// better : Hashing
+// hash array will be size of maxi+1 in the array 
+// hashing with map is even better than using hashing using array 
+
+// optimal 
+int getSingleElement(vector<int> &arr){
+    int xor = 0 ;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        xor = xor ^ arr[i];
+    }
+    return xor ;
+    
+}
+
+
+
 int main()
 {
 
@@ -213,6 +259,12 @@ int main()
 
     Union();
     Intersection();
+
+    missingNum();
+
+    consicutive();
+
+    getSingleElement();
 
     return 0;
 }
