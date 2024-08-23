@@ -122,11 +122,137 @@ void sortColors(vector<int>& nums) {
         }
     }
 
+
+
+// 3. Majority Element (>n/2 times)
+// brutte force 
+int majorityElement(vector<int>& nums) {
+    for(int i = 0; i < nums.size(); i++) {
+        int count = 0;
+
+        for(int j = 0; j < nums.size(); j++) {
+            if(nums[j] == nums[i]) count++;
+        }
+        if(count > (nums.size() / 2)) return nums[i];
+    }
+
+    time : O(n2)
+}
+
+// better (hashing)
+int majorElement(vector<int> &arr)
+{
+    map<int, int>mpp;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        mpp[arr[i]]++;
+    }
+
+    for (auto it : mpp) {
+        if (it.second > (arr.size() / 2)){
+            return it.first;
+        }
+    }
+    return -1 ;
+
+    // time : O(nlogn) + O(n);
+    // space : O(n) (when all unique)
+}
+
+// optimal 
+// Moorie's Voting Algo 
+int majorElement(vector<int> &arr){
+    int el ;
+    int cnt = 0 ;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (cnt == 0) {
+            cnt =1 ;
+            el = v[i];
+        }
+        else if(v[i] == el){
+            cnt++;
+        }
+        else {
+            cnt-- ;
+        }
+
+    }
+    int cnt1 = 0 ;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i] == el) cnt++ ;
+    }
+    if (cnt1 > (arr.size()/2)) return el ; 
+    return -1 ;
+    
+    // time : O(n) + O(n)
+    // space : O(1)
+}
+
+
+
+// 4. maximum subarray sum 
+// Kadane's Algorithm
+// brutte force | better 
+int maxSubArrSum(vector<int> &arr) {
+    int maxSum = 0 ;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        int sum = 0 ;
+        for (int j = i; j < arr.size(); j++)
+        {
+            sum = sum + arr[j];
+            maxSum = max(maxSum, sum);
+        }
+        
+    }
+    return maxSum;
+
+    // time :O(n2)
+}
+
+// optimal ( kadane's theorm)
+int maxSubArrSum(vector<int> &arr) {
+    int maxSum = 0 ;
+    int sum = 0 ;
+    for (auto it : arr) {
+        sum = sum + it ;
+        maxSum = max(maxSum , sum) ;
+        if (sum < 0) sum = 0 ;
+    }
+    return maxSum;
+
+    // time :O(n)
+}
+
+
+
+// 5. Best Time to Buy and Sell Stock
+int maxProfit(vector<int> &arr) {
+    int mini = arr[0] ;
+    int maxProfit = 0 ;
+    int n = arr.size
+    for (int i = 0; i < n; i++)
+    {
+        int cost = arr[i] - mini ;
+        maxProfit = max(maxProfit , cost) ;
+        mini = min(mini , arr[i]);
+    }
+    return maxProfit; 
+    
+}
+
+
 int main()
 {
     twoSum();
 
     sortColors();
-    
+
+    majorElement();
+
+
+
     return 0;
 }
