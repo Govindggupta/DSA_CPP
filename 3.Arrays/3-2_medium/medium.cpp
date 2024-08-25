@@ -244,6 +244,120 @@ int maxProfit(vector<int> &arr) {
 }
 
 
+
+// 6.Rearrange the array in alternating positive and negative items
+// brutte force | better
+void rearrangeArray(vector<int> &arr){
+    vector<int> pos;
+    vector<int> neg;
+
+    for (int i = 0; i < arr.size; i++)
+    {
+        if(arr[i] >= 0) pos.emplace_back(arr[i]);
+        else neg.emplace_back(arr[i]);
+    }
+
+    for(int i = 0 ; i < arr.size() / 2 ; i++) {
+        arr[i*2] = pos[i];
+        arr[(i*2)+1] = neg[i]; 
+    }
+    // time : O(2n) 
+    // space : O(n)
+}
+ 
+// optimal 
+vector<int> rearrangearray(vector<int> &arr ) {
+    int n = arr.size();
+    vector<int> ans(n , 0);
+    int posindex = 0 , negIndex = 1 ;
+    for (int  i = 0; i < n; i++)
+    {
+        if (arr[i] < 0) {
+            arr[negIndex] = arr[i];
+            negIndex += 2;
+        }
+        else {
+            arr[posindex] = arr[i];
+            posindex += 2;
+        }
+    }
+    return ans ;
+    // time : O(n)
+    // spce  O(n)
+}
+
+// 6.2 Variity 2 (if neg or pos are remaining )
+void rearrangeArray(vector<int> &arr) {
+    vector<int> pos;
+    vector<int> neg;
+
+    // Separate positive and negative numbers
+    for (int i = 0; i < arr.size(); i++) {
+        if (arr[i] >= 0) pos.emplace_back(arr[i]);
+        else neg.emplace_back(arr[i]);
+    }
+
+    int i = 0, j = 0, k = 0;
+
+    // Fill the array by alternating between positive and negative numbers
+    while (i < pos.size() && j < neg.size()) {
+        arr[k++] = pos[i++];
+        arr[k++] = neg[j++];
+    }
+
+    // If there are remaining positive numbers
+    while (i < pos.size()) {
+        arr[k++] = pos[i++];
+    }
+
+    // If there are remaining negative numbers
+    while (j < neg.size()) {
+        arr[k++] = neg[j++];
+    }
+}
+
+   
+
+// 7. Next Permutation
+// brutte force 
+// make all permutation --> linear search --> return next index 
+// time : n! * n (very high order)
+
+// optimal 
+vector<int> nextPermutation(vector<int> &arr) {
+    int n = arr.size() ;
+    int index = -1 ;
+    for (int i = n-2 ; i>=0 ; i--)
+    {
+        if (arr[i] < arr[i+1]) 
+        {
+            index = i ;
+            break;
+        }
+    }
+    if(index == -1)
+    {
+        reverse(arr.begin() , arr.end()) ;
+        return arr;
+    }
+
+    for (int i=n-1 ; i>index ; i--)
+    {
+        if(arr[i] > arr[index]) 
+        {
+            swap(arr[i] , arr[index]);
+            break;
+        }
+    }
+    reverse(arr.begin()+index+1, arr.end());
+    return arr; 
+
+    // time : O(3n) 
+    // space : O(1)
+    
+}
+
+
 int main()
 {
     twoSum();
@@ -252,7 +366,13 @@ int main()
 
     majorElement();
 
+    maxProfit();
 
+    rearrangeArray();
+
+    nextPermutation();
+
+    
 
     return 0;
 }
