@@ -358,6 +358,43 @@ vector<int> nextPermutation(vector<int> &arr) {
 }
 
 
+
+// 8. Leaders in an array 
+// brutte force 
+void leader(vectoe<int> &arr) {
+    int n = arr.size();
+    for (int i=0 ; i<n ; i++){
+        bool leader = true ;
+        for (int j = i+1 ; j < n; j++)
+        {
+            if (arr[j] > arr[i]){
+                leader = false ;
+                break;
+            }
+        }
+        if (leader == true) cout << i ;
+        
+    }
+    // time : O(n2)
+    // space : O(1)
+}
+
+// optimal 
+vector<int> leaders(int n, int arr[]) {
+    // Code here
+    vector<int> ans;
+    int maxi = INT_MIN;
+    for(int i = n-1 ; i>=0 ; i--){
+       if (arr[i] >= maxi) {
+            ans.emplace_back(arr[i]);
+            maxi = arr[i];
+       }
+    }
+    reverse(ans.begin() , ans.end());
+    return ans ;
+}
+
+
 int main()
 {
     twoSum();
@@ -372,7 +409,7 @@ int main()
 
     nextPermutation();
 
-    
+    leader();
 
     return 0;
 }
