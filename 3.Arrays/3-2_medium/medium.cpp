@@ -411,5 +411,7 @@ int main()
 
     leader();
 
+    setMatrixZero();
+
     return 0;
 }
