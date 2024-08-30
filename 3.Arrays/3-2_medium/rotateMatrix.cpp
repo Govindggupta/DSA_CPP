@@ -82,8 +82,12 @@ vector<int> spiralOrder(vector<vector<int>>& arr) {
 }
 
 
+// 13. subarrays with sum k 
+
 
 int main() {
     rotateMatrics();
+    spiralOrder();
+
     return 0;
 }
