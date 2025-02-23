@@ -60,6 +60,8 @@ using namespace std;
 //   else return 0;
 // }
 
+
+
 // // 5.1
 // void all_divisors(int N) {
 //   for (int i = 1; i <= N; i++) {
