@@ -1,1 +1,2 @@
-this my practice of dsa in cpp 
+#DSA
+This are the notes for DSA in cpp 
