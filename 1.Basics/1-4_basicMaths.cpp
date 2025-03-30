@@ -77,6 +77,19 @@ using namespace std;
 //   }
 // }
 
+// Question to be seen once 
+// sum of all divisors 
+
+int sumOfDivisors(int n) {
+  int sum = 0 ;
+  
+  for ( int i = 1 ; i <= n ; i++)  { 
+      sum = sum +  ( n / i ) * i ; 
+  }
+  
+  return sum ; 
+}
+
 // // 6
 // int isPrime(int N) {
 //   for (int i = 2; i*i <= N; i++) {
@@ -111,6 +124,25 @@ void hcf(int num1, int num2) {
 
     if(num1 == 0) cout << num2 << endl;
     else cout << num1 << endl;
+}
+
+// lcm = (n1*n2)/hcf(n1, n2)
+vector<int> lcmAndGcd(int a, int b) {
+  int A = a , B = b ; 
+  int lcm ; 
+  int gcd ; 
+  
+  while( a>0 && b>0 ) {
+      if ( a < b ) b = b % a ; 
+      else a = a % b ; 
+  }
+  
+  if ( a == 0 )  gcd = b ; 
+  else gcd = a ;
+  
+  lcm = (A * B) / gcd ;
+  
+  return {lcm , gcd };
 }
 
 int main() {
