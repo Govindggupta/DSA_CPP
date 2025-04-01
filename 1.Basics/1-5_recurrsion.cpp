@@ -159,6 +159,7 @@ bool isPalindrome(const string& str, int left, int right) {
     isPalindrome(str, left + 1, right - 1);
 }
 
+
 int main() {
     string n;
     cout << ">> ";
