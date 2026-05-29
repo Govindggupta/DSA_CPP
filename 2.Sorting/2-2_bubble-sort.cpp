@@ -50,9 +50,10 @@ int main()
 
 // the inner loop will run like this;
 // [0 --> n)
-// [1 --> n)
-// [2 --> n)
-// [3 --> n) and so on.
+// [0 --> n-1)
+// [0 --> n-2)
+// [0 --> n-3)
+// [0 --> n-4) and so on.
 // time complexity ---> summation will be around n(n+1)/2
 // time complexity ---> O(n^2) ---> for worst and avg case.
 // time complexity ---> O(n) ---> for best case.
