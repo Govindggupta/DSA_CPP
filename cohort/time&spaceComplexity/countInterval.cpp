@@ -22,6 +22,7 @@ int main() {
             } else { // t == 4
                 count = r - l + 1;
             }
+            count = max(0LL, count);
         }
         
         cout << count << endl;
